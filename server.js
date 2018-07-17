@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const route = require('./router/route.js')
+const mail = require('./mail.js')
 
 const log4js = require('log4js')
 const logger = log4js.getLogger()
@@ -34,3 +35,12 @@ app.use(route)
 app.listen(port, () => {
     console.log(`server is running`)
 })
+
+
+process.on('uncaughtException', (err) => {
+    console.log(err)
+    console.log('服务器异常')
+    mail.send('「服务器异常」'+ err.toString(), err.stack)
+})
+
+testObject.value = 0
