@@ -16,10 +16,18 @@ const port = '8080'
 
 //解析body中间件 —————— 传json 数据来
 app.use(bodyParser.json())
+
+//增加日志
+app.use((req, res, next) => {
+    logger.info(`${req.method} ${req.path} ${res.socket.remoteAddress}`)
+    next()
+})
+
 /**
  * Api
  */
 app.use(route)
+
 
 
 
