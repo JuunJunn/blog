@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/JuunJunn/blog/issues"
   },
-  "homepage": "https://github.com/JuunJunn/blog#readme"
+  "homepage": "https://github.com/JuunJunn/blog#readme",
+  "devDependencies": {
+    "log4js": "^3.0.0"
+  }
 }
