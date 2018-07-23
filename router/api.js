@@ -2,7 +2,7 @@ const Blog = require('../Model/blog.js')
 
 /**
  * 根据id查询单个blog对象 返回Promise对象
- * @param {id} id
+ * @param {number} id
  * @returns {Promise} 
  */
 const findById = (id) => {
