@@ -6,7 +6,7 @@ const { Url } = require('url')
 
 //设定测试数据
 let postData = querystring.stringify({
-    "id": 2
+    "id": 2,
     "title": "how to learn nodejs",
     "content": "balalallalalalaaallalalallalalal"
 })
