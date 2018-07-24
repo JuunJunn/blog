@@ -18,6 +18,7 @@
     "express": "^4.16.3",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
+    "nodemailer": "^4.6.7",
     "nodemon": "^1.17.5",
     "sequelize": "^4.38.0"
   },
@@ -26,6 +27,7 @@
   },
   "homepage": "https://github.com/JuunJunn/blog#readme",
   "devDependencies": {
+    "jest": "^23.4.1",
     "log4js": "^3.0.0"
   }
 }

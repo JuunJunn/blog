@@ -102,29 +102,34 @@ const deleteBlog = (id) => {
  * @param {Object} param 
  * @returns {Promise}
  */
-const updateBlog = (param) => {
-    return Blog.update({
-        title: param.title,
-        content: param.content
-    },{
-        where: {
-            id: param.id
-        }
-    }).then(result => {
-        if(result) {
-            return {
-                code: 0,
-                data: {
-                    id: param.id
-                }
-            }
-        }else {
-            return {
-                code: -5,
-                message: "not found"
+const updateBlog = async (param) => {
+    let result
+    try {
+        result = await Blog.update({
+            title: param.title,
+            content: param.content
+        },{
+            where: {
+                id: param.id
             }
         }
-    })
+    )
+    } catch (error) {
+        console.log(error)
+    }
+    if(result[0]) {
+        return {
+             code: 0,
+            data: {
+                 id: param.id
+            }
+        }
+    }else {
+         return {
+            code: -5,
+            message: "not found"
+        }
+    }
 }
 
 module.exports = {
