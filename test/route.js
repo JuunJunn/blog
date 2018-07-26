@@ -5,11 +5,11 @@ const { Url } = require('url')
 
 
 //设定测试数据
-let postData = querystring.stringify({
-    "id": 2,
-    "title": "how to learn nodejs",
-    "content": "balalallalalalaaallalalallalalal"
-})
+let postData =JSON.stringify({
+        "id": '2',
+        "title": "how to learn nodejs",
+        "content": "balalallalalalaaallalalallalalal"
+}) 
 
 //请求配置
 let opts = {
@@ -17,9 +17,8 @@ let opts = {
     port: 8080,
     path: '',
     method: 'get',
-    header: {
-        "Content-type": "application/json",
-        'Content-Length': Buffer.byteLength(postData)
+    headers: {
+        "Content-type": "application/json"
     }
 }
 
@@ -73,7 +72,7 @@ describe('验证web 服务是否正常', () => {
 
     test('/api/blog_create', (done) => {
         opts.path = '/api/blog_create'
-        opts.method = 'post'
+        opts.method = 'POST'
         let body = ''
         const req = http.request(opts, (res) => {
             res.on('data', (data) => {
@@ -88,13 +87,53 @@ describe('验证web 服务是否正常', () => {
             done()
         })
 
-        req.write(postData)
+        req.write(postData.toString())
         req.end()
     })
 
-    
-    test('/api/blog_update', (done) => {
-        console.log('')
+
+    test('/api/blog_delete', (done) => {
+        opts.path = '/api/blog_delete'
+        opts.method = 'POST'
+        let body = ''
+        const req = http.request(opts, (res) => {
+            res.on('data', (data) => {
+                body += data
+            })
+            res.on('end', () => {
+                body = JSON.parse(body)
+                expect(body.message).toBe('delete success')
+            })
+
+            expect(res.statusCode).toEqual(200)
+            done()
+        })
+
+        req.write(postData.toString())
+        req.end()
     })
+    
+
+    test('/api/blog_update', (done) => {
+        opts.path = '/api/blog_update'
+        opts.method = 'POST'
+        let body = ''
+        const req = http.request(opts, (res) => {
+            res.on('data', (data) => {
+                body += data
+            })
+            res.on('end', () => {
+                body = JSON.parse(body)
+                expect(body.message).toBe('update success')
+            })
+
+            expect(res.statusCode).toEqual(200)
+            done()
+        })
+
+        req.write(postData.toString())
+        req.end()
+    })
+
 })
 

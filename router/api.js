@@ -84,6 +84,7 @@ const deleteBlog = (id) => {
                 if(result) {
                     return {
                         code: 0,
+                        message: 'delete success',
                         data: {
                             id: id
                         }
@@ -119,7 +120,8 @@ const updateBlog = async (param) => {
     }
     if(result[0]) {
         return {
-             code: 0,
+            code: 0,
+            message: "update success",
             data: {
                  id: param.id
             }

@@ -20,6 +20,7 @@ app.use(bodyParser.json())
 //增加日志输出
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.path} ${res.socket.remoteAddress}`)
+    console.log(req.body)
     next()
 })
 
