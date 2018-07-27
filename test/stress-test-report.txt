@@ -1,0 +1,36 @@
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /api/blog
+Document Length:        8 bytes
+
+Concurrency Level:      100
+Time taken for tests:   7.723 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2060000 bytes
+HTML transferred:       80000 bytes
+Requests per second:    1294.76 [#/sec] (mean)
+Time per request:       77.235 [ms] (mean)
+Time per request:       0.772 [ms] (mean, across all concurrent requests)
+Transfer rate:          260.47 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   1.6      0      21
+Processing:    19   76  18.5     72     153
+Waiting:       18   76  18.5     72     153
+Total:         39   77  18.5     72     153
+
+Percentage of the requests served within a certain time (ms)
+  50%     72
+  66%     78
+  75%     84
+  80%     88
+  90%    105
+  95%    119
+  98%    132
+  99%    134
+ 100%    153 (longest request)

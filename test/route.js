@@ -1,13 +1,9 @@
-const assert = require('assert')
 const http = require('http')
-const querystring = require('querystring')
-const { Url } = require('url')
-
 
 //设定测试数据
 let postData =JSON.stringify({
-        "id": '2',
-        "title": "how to learn nodejs",
+        "id": "63",
+        "title": "how to learn nodejs3334sdf545rere61",
         "content": "balalallalalalaaallalalallalalal"
 }) 
 
@@ -35,7 +31,7 @@ describe('验证web 服务是否正常', () => {
 
 
     test('/api/blog/id=xxx', (done) => {
-        opts.path = '/api/blog?id=2'
+        opts.path = `/api/blog?id=5`
         let body = ''
         const req = http.request(opts, (res) => {
             res.on('data', (data) => {
@@ -91,29 +87,7 @@ describe('验证web 服务是否正常', () => {
         req.end()
     })
 
-
-    test('/api/blog_delete', (done) => {
-        opts.path = '/api/blog_delete'
-        opts.method = 'POST'
-        let body = ''
-        const req = http.request(opts, (res) => {
-            res.on('data', (data) => {
-                body += data
-            })
-            res.on('end', () => {
-                body = JSON.parse(body)
-                expect(body.message).toBe('delete success')
-            })
-
-            expect(res.statusCode).toEqual(200)
-            done()
-        })
-
-        req.write(postData.toString())
-        req.end()
-    })
     
-
     test('/api/blog_update', (done) => {
         opts.path = '/api/blog_update'
         opts.method = 'POST'
@@ -135,5 +109,26 @@ describe('验证web 服务是否正常', () => {
         req.end()
     })
 
+
+    test('/api/blog_delete', (done) => {
+        opts.path = '/api/blog_delete'
+        opts.method = 'POST'
+        let body = ''
+        const req = http.request(opts, (res) => {
+            res.on('data', (data) => {
+                body += data
+            })
+            res.on('end', () => {
+                body = JSON.parse(body)
+                expect(body.message).toBe('delete success')
+            })
+
+            expect(res.statusCode).toEqual(200)
+            done()
+        })
+
+        req.write(postData.toString())
+        req.end()
+    })
 })
 
