@@ -11,7 +11,7 @@ logger.level = 'debug'
 const app = express()
 
 const host = '127.0.0.1'
-const port = '8080'
+const port = '80'
 
 
 //解析body中间件 —————— 传json 数据来
