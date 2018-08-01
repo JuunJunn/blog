@@ -11,7 +11,7 @@ logger.level = 'debug'
 const app = express()
 
 const host = '127.0.0.1'
-const port = '8080'
+const port = '80'
 
 
 //解析body中间件 —————— 传json 数据来
@@ -28,6 +28,11 @@ app.use((req, res, next) => {
  * Api
  */
 app.use(route)
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+    res.send('404 not found')
+})
 
 
 app.listen(port, () => {
